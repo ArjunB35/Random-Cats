@@ -1,0 +1,69 @@
+
+<!doctype HTML>
+    <html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Cats</title>
+    
+ <style>
+     
+     button#catbutton {
+  border: none;
+  background: blue;
+  color: red;
+  cursor: pointer;
+}
+
+img {
+  
+  width: 400px;
+}
+     
+ </style>
+     
+     
+</head>
+        
+    
+<body> 
+    
+<button id = "catbutton">
+  Give me a cat   
+    
+</button>
+
+
+<img id = "catimage" 
+ alt="no cat">
+
+
+    <script type="text/javascript">
+    
+const API_URL = 'https://api.thecatapi.com/v1/images/search'
+
+const cat = document.querySelector('#catimage')
+
+document.querySelector('#catbutton').addEventListener('click', function() {
+ 
+  fetch(API_URL)
+    
+    .then(data => {
+    return data.json()
+   })
+  
+
+    .then(json => {
+ console.log(json)
+    cat.src = json[0].url
+    
+  })
+  
+})
+        
+        
+        </script>    
+    
+ </body>
+        
+</html>
